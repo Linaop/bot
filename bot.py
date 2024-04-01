@@ -118,6 +118,12 @@ def hello_msg(message):
                                            f'\n\nПодскажи, какое у тебя настроение?',
                      reply_markup=main_keyboards)
 
+@bot.message_handler(commands=['annotation'])
+def send_welcome(message):
+    chat_id = message.chat.id
+    your_annotation = "Преступление и наказание"
+    bot.send_message(chat_id, your_annotation)
+
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith('book'))
 def book_call(call):
